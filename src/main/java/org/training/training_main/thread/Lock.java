@@ -1,5 +1,11 @@
 package org.training.training_main.thread;
 
+
+/**
+ * Semaphore
+ * @author fahadtasleem
+ *
+ */
 public class Lock {
 	private static Object obj = new Object();
 	private static boolean isLocked = false;
