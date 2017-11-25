@@ -7,18 +7,37 @@ import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Maps {
+	static class A{
+		int value;
+		
+		A(int v){
+			this.value = v;
+		}
+		
+		@Override
+		public int hashCode() {
+			return 1;
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			A a1 = (A)obj;
+			return value == a1.value;
+		}
+	}
+	
 	public static void main(String[] args) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("a", "A");
-		map.put("b", "B");
-		map.put("c", "C");
-		for(Entry<String, String> entry: map.entrySet()) {
-			System.out.println(entry.getKey()+" "+entry.getValue());
+		Map<A, String> map = new HashMap<A, String>();
+		map.put(new A(2), "A");
+		map.put(new A(3), "B");
+		map.put(new A(4), "C");
+		for(Entry<A, String> entry: map.entrySet()) {
+			System.out.println(entry.getKey().value+" "+entry.getValue());
 		}		
-		Map<String, String> synchronisedMap = Collections.synchronizedMap(map);
+		Map<A, String> synchronisedMap = Collections.synchronizedMap(map);
 		synchronisedMap.put(null, null);
-		Map<String, String> concurrentMap = new ConcurrentHashMap<String, String>(map);
-		concurrentMap.put("d", null);
+		Map<A, String> concurrentMap = new ConcurrentHashMap<A, String>(map);
+		concurrentMap.put(new A(5), null);
 		
 	}
 }
