@@ -48,7 +48,7 @@ public class VerticalTraversal {
 
 		// If this node is on the given line number
 		if (hd == line_no)
-			System.out.print(node.data + " ");
+			System.out.print(node.data + " - ");
 
 		// Recur for left and right subtrees
 		printVerticalLine(node.left, line_no, hd - 1);
@@ -60,12 +60,12 @@ public class VerticalTraversal {
 	void verticalOrder(Node node) {
 		// Find min and max distances with resepect to root
 		findMinMax(node, val, val, 0);
-
+		System.out.println(val.min+" "+val.max);
 		// Iterate through all possible vertical lines starting
 		// from the leftmost line and print nodes line by line
 		for (int line_no = val.min; line_no <= val.max; line_no++) {
 			printVerticalLine(node, line_no, 0);
-			System.out.println("");
+			System.out.print("");
 		}
 	}
 
@@ -78,11 +78,11 @@ public class VerticalTraversal {
 		tree.root.left = new Node(2);
 		tree.root.right = new Node(3);
 		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
-		tree.root.right.left = new Node(6);
-		tree.root.right.right = new Node(7);
-		tree.root.right.left.right = new Node(8);
-		tree.root.right.right.right = new Node(9);
+//		tree.root.left.right = new Node(5);
+//		tree.root.right.left = new Node(6);
+//		tree.root.right.right = new Node(7);
+//		tree.root.right.left.right = new Node(8);
+//		tree.root.right.right.right = new Node(9);
 
 		System.out.println("vertical order traversal is :");
 		tree.verticalOrder(tree.root);

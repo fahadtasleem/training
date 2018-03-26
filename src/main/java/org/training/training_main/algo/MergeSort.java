@@ -39,7 +39,7 @@ public class MergeSort {
 		int[] numbers = { 10, 5, 7, 9, 3, 1, 2, 11, 8 };
 		mergeSort(numbers, 0, numbers.length - 1);
 		for (int i : numbers) {
-			System.out.println(i);
+			System.out.print(i+" ");
 		}
 	}
 

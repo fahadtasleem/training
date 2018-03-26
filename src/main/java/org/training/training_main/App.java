@@ -1,7 +1,6 @@
 package org.training.training_main;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 /**
  * Hello world!
@@ -19,18 +18,33 @@ public class App
 	}
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        int h;
-        System.out.println((h = 134345342));
-        int i;
-        System.out.println(i = 23);
-        System.out.println(((h = 12) ^ (h >>> 16)));
-        Map<Employee, String> m = new HashMap<>();
-        Employee e1 = new Employee("a", "12");
-        Employee e2= new Employee("b", "25");
-        m.put(e1, "f");
-        m.put(e2, "S");
-        System.out.println(m.get(e1)+" "+m.get(e2));
+        System.out.print(hasString("sadcddfdfb", "abc"));
         
+    }
+    
+    static boolean hasString(String in, String reg){
+        char[] inChars = in.toCharArray();
+        Arrays.sort(inChars);
+        in = new String(inChars);
+        System.out.println(in);
+        boolean hasSubString = true;
+        int lastIndex = 0;
+        for(int j=0;j<reg.length();j++){
+            char c = reg.charAt(j);
+            boolean found = false;
+            for(int i =lastIndex;i<inChars.length;i++){
+                 System.out.println(inChars[i]+"  "+c);
+                if(inChars[i] == c){
+                	System.out.println("Found "+c+" "+i);
+                    lastIndex = i;
+                    found=true;
+                    break;
+                }
+            }
+            if(!found){
+                return false;
+            }
+        }
+        return hasSubString;
     }
 }

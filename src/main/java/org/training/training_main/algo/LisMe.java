@@ -36,15 +36,15 @@ public class LisMe {
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        List<String> strs = Files.readAllLines(Paths.get("/Users/fahadtasleem/Arr.text"));
-        System.out.println(strs.size());
-        int[] arr = new int[strs.size()];
-        int i=0;
-        for(String s : strs) {
-        		arr[i++] = Integer.parseInt(s);
-        }
+//        List<String> strs = Files.readAllLines(Paths.get("/Users/fahadtasleem/Arr.text"));
+//        System.out.println(strs.size());
+//        int[] arr = new int[strs.size()];
+//        int i=0;
+//        for(String s : strs) {
+//        		arr[i++] = Integer.parseInt(s);
+//        }
         int[] a = {3,2,6,4,5,1};
-        int result = longestIncreasingSubsequence(arr);
+        int result = longestIncreasingSubsequence(a);
         System.out.println(result);
     }
 }
