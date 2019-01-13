@@ -1,6 +1,7 @@
 package org.training.training_main;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Hello world!
@@ -19,7 +20,8 @@ public class App
     public static void main( String[] args )
     {
         System.out.print(hasString("sadcddfdfb", "abc"));
-        
+        System.out.println(new Random(100).nextInt());
+        System.out.println(new Random(100).nextInt());
     }
     
     static boolean hasString(String in, String reg){

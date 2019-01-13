@@ -53,7 +53,14 @@ public class IsBinaryBST {
 	        return (isBSTUtil(node.left, min, node.data-1) &&
 	                isBSTUtil(node.right, node.data+1, max));
 	    }
-	 
+	    
+	    void printInOrder(Node node) {
+			if(node==null)
+				return;
+			printInOrder(node.left);
+			System.out.print(node.data+" ");
+			printInOrder(node.right);
+		}
 	}
 	
     /* Driver program to test above functions */
@@ -70,5 +77,6 @@ public class IsBinaryBST {
             System.out.println("IS BST");
         else
             System.out.println("Not a BST");
+        tree.printInOrder(tree.root);
     }
 }

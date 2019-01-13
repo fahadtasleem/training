@@ -8,6 +8,7 @@ public class MinHeap {
     public MinHeap(int capacity){
         this.capacity=capacity;
         mH = new int [capacity+1];
+        System.out.println(capacity+" ----  "+mH.length);
        currentSize =0;
     }
     
@@ -91,6 +92,7 @@ public class MinHeap {
         for(int i=0;i<arrA.length;i++){
             System.out.print("  " + arrA[i]);
         }
+        System.out.println("");
         MinHeap m = new MinHeap(arrA.length);
         System.out.print("\nMin-Heap : ");
         m.createHeap(arrA);

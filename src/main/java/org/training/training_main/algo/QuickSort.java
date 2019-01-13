@@ -14,6 +14,7 @@ public class QuickSort {
 	private static int partition(int[] elems, int start, int end) {
 		int pivot = elems[end]; 
         int i = (start-1); // index of smaller element
+        System.out.println("S : E: "+start+' '+end);
         for (int j=start; j<end; j++)
         {
             // If current element is smaller than or
@@ -39,7 +40,7 @@ public class QuickSort {
 	}
 
 	public static void main(String[] ar){
-		int[] elems = new int[]{27,5,2,6,-5,12,1};
+		int[] elems = new int[]{27,5,1,6,-5,12,2};
 		System.out.println(Arrays.toString(elems));
 		quickSort(elems, 0, elems.length-1);
 		System.out.println(Arrays.toString(elems));
