@@ -33,7 +33,8 @@ public class Maps {
 		map.put(new A(4), "C");
 		for(Entry<A, String> entry: map.entrySet()) {
 			System.out.println(entry.getKey().value+" "+entry.getValue());
-		}		
+		}
+		System.out.println(map.get(new A(2)));
 		Map<A, String> synchronisedMap = Collections.synchronizedMap(map);
 		synchronisedMap.put(null, null);
 		Map<A, String> concurrentMap = new ConcurrentHashMap<A, String>(map);
