@@ -1,6 +1,10 @@
 package org.training.training_main.ds;
 
-
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class BinaryTree
 {
@@ -75,6 +79,48 @@ public class BinaryTree
     
     Node findCommonParent(int a , int b) {
     	return findCommonParentUtil(this.root,a,b);
+	}
+    
+    public void print(Node root,int w,int h,Map<Integer,ENode> map){
+        if(root == null){
+            return;
+        }
+        if(!map.containsKey(w)){
+        	ENode e = new ENode(root, h); 
+            map.put(w,e);
+        }else {
+        	ENode e = map.get(w);
+        	if(h<e.h) {
+        		map.put(w, new ENode(root, h));
+        	}
+        }
+        print(root.left,w-1,h+1,map);
+        print(root.right,w+1,h+1,map);
+        
+    }
+
+	public void topView(Node root) {
+        Map<Integer,ENode> map = new TreeMap<Integer,ENode>();
+        print(root,0,0,map);
+        Set<Integer> keySet = map.keySet();
+        //Collections.sort(keySet);
+        for(Integer k : keySet){
+            ENode n = map.get(k);
+            System.out.print(n.n.data+" ");
+            // for(Node n : list){
+            //     System.out.print(n.data+" ");    
+            // }
+        }
+    }
+	
+	static class ENode{
+		Node n;
+		int h;
+		
+		public ENode(Node n,int h){
+			this.n= n;
+			this.h= h;
+		}
 	}
 }
 	

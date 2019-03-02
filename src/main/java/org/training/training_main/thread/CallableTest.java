@@ -26,7 +26,7 @@ public class CallableTest {
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		FutureTask<java.util.concurrent.Callable<Object>>[] randomNumberTasks = new FutureTask[5];
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 1; i++) {
 			Callable callable = new CallableExample1(i);
 
 			// Create the FutureTask with Callable
@@ -38,7 +38,7 @@ public class CallableTest {
 			t.start();
 		}
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 1; i++) {
 			// As it implements Future, we can call get()
 			System.out.println(randomNumberTasks[i].get());
 
