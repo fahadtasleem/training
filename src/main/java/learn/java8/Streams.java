@@ -10,7 +10,7 @@ public class Streams {
 		List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
 		List<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
 		System.out.println(filtered);
-		strings.forEach(System.out::println);
+		strings.forEach(System.out::print);
 		System.out.println(strings.stream().map((s)->s+"he").collect(Collectors.toList()));
 		System.out.println(strings.stream().limit(3).collect(Collectors.toList()));
 		System.out.println(strings.stream().sorted().collect(Collectors.toList()));

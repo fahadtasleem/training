@@ -1,4 +1,4 @@
-package org.training.training_main.algo.array;
+package org.training.training_main.algo.array.dp;
 
 import java.util.Arrays;
 import java.util.LinkedList;
