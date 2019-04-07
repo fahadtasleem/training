@@ -3,7 +3,9 @@ package org.training.training_main.ds;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
+import java.util.Stack;
 import java.util.TreeMap;
 
 public class BinaryTree
@@ -120,6 +122,53 @@ public class BinaryTree
 		public ENode(Node n,int h){
 			this.n= n;
 			this.h= h;
+		}
+	}
+	
+	public void spiralView(Node root) {
+		Stack<Node> s1 = new  Stack<>();
+		Stack<Node> s2 = new Stack<>();
+		s1.push(root);
+		while(!(s1.isEmpty() && s2.isEmpty())) {
+			while(!s1.empty()) {
+				Node n = s1.pop();
+				System.out.println(n.data);
+				if(n.right!=null)
+					s2.push(n.right);
+				if(n.left!=null)
+					s2.push(n.left);
+			}
+			while(!s2.empty()) {
+				Node n = s2.pop();
+				System.out.println(n.data);
+				if(n.left!=null)
+					s1.push(n.left);
+				if(n.right!=null)
+					s1.push(n.right);
+			}
+		}
+	}
+	
+	public void rightView(Node root) {
+		int h = 0;
+		System.out.println("--Right view");
+		Queue<Node> q= new LinkedList<>();
+		q.add(root);
+		int n = q.size();
+		while(!q.isEmpty()) {
+			n = q.size();
+			while(n!=0) {
+				Node no = q.poll();
+				n--;
+				if(n==0) {
+					System.out.print(no.data+" ");
+				}
+				if(no.left!=null)
+					q.add(no.left);
+				if(no.right!=null)
+					q.add(no.right);
+			}
+			h++;
 		}
 	}
 }
