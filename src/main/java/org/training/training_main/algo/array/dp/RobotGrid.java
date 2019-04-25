@@ -1,8 +1,11 @@
 package org.training.training_main.algo.array.dp;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class RobotGrid {
 	static List<List<String>> listPaths = new LinkedList<List<String>>(); 
@@ -86,20 +89,90 @@ public class RobotGrid {
 			{0,0,0},
 			{0,0,0}
 		};
-		System.out.println(countPath(grid,0,0));
-		System.out.println(countPathDynamic(grid,0,0));
-		List<String> path = new LinkedList<>();
-		getPaths(grid,0,0,path);
-		System.out.println(listPaths.size());
-		for(List<String> l :listPaths) {
-			System.out.println(Arrays.toString(l.toArray()));
-		}
+//		System.out.println(countPath(grid,0,0));
+//		System.out.println(countPathDynamic(grid,0,0));
+//		List<String> path = new LinkedList<>();
+//		getPaths(grid,0,0,path);
+//		System.out.println(listPaths.size());
+//		for(List<String> l :listPaths) {
+//			System.out.println(Arrays.toString(l.toArray()));
+//		}
 		int[][] costgrid = new int[][]{
-			{0,1,2},
-			{2,1,4},
-			{1,4,2}
+			{1,1,1,1},
+			{1,1,0,1},
+			{9,1,1,1},
+			{1,1,1,0},
+//			{0,1,0,1},
+//			{0,1,1,1}
 		};
-		System.out.println("*************** Cost of min path");
-		System.out.println(costPathDynamic(costgrid));
+//		System.out.println("*************** Cost of min path");
+//		System.out.println(costPathDynamic(costgrid));
+		System.out.println(findlot(costgrid,4,4));
 	}
+	
+	static int getMin(List<Integer> a) {
+		int v = Integer.MAX_VALUE;
+		boolean isFound = false;
+		for(int i:a) {
+			if(i==-1)
+				continue;
+			if(i<v) {
+				isFound = true;
+				v = i;
+			}
+		}
+		return isFound?v:-1;
+	}
+	
+	public static int findlot(int[][] lot,int numRows,int numColumns) {
+		 int []x = {0,0,1,-1};//This represent 4 directions right, left, down , up
+	        int []y = {1,-1,0,0};
+	        int blockI = -1;
+			int blockJ = -1;
+	        LinkedList<Integer[]> q = new LinkedList();
+	        q.add(new Integer[] {0,0});
+	        int[][]dist = new int[numRows][numColumns];
+	        for(int []a : dist){
+	            Arrays.fill(a,-1);
+	        }
+	        dist[0][0] = 0;
+	        while(!q.isEmpty()){
+	            Integer[] p = q.removeFirst();
+	            
+	            for(int i = 0; i < 4; i++){
+	                int a = p[0] + x[i];
+	                int b = p[1] + y[i];
+	                if(a >= 0 && b >= 0 && a < numRows && b < numColumns && dist[a][b] == -1 && lot[a][b] != 0 ){
+	                	if(lot[a][b] == 9) {
+	    					blockI = a;
+	    					blockJ=b;
+	    					continue;
+	    				}
+	                    dist[a][b] = 1 + dist[p[0]][p[1]];
+	                    q.add(new Integer[] {a,b});
+	                }
+	            }
+	        }
+	        if(blockI != -1 && blockJ!=-1) {
+				List<Integer> values = new ArrayList();
+				if(blockI >0) {
+					values.add(dist[blockI-1][blockJ]);
+				}
+				if(blockJ>0) {
+					values.add(dist[blockI][blockJ-1]);
+				}
+				if(blockI < numRows-1) {
+					values.add(dist[blockI+1][blockJ]);
+				}
+				if(blockJ<numColumns-1) {
+					values.add(dist[blockI][blockJ+1]);
+				}
+				int m = getMin(values);
+				System.out.println("=== "+m);
+				return m;
+			}
+	        return -1;
+	}
+	
+
 }
