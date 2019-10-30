@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Streams {
 	public static void main(String[] args) {
-		List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+		List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl","bc");
 		List<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
 		System.out.println(filtered);
 		strings.forEach(System.out::print);
@@ -26,5 +26,6 @@ public class Streams {
 		System.out.println("shortest number in List : " + stats.getMin());
 		System.out.println("Sum of all numbers : " + stats.getSum());
 		System.out.println("Average of all numbers : " + stats.getAverage());
+		System.out.println(strings.stream().map((s)->s+"").collect(Collectors.toSet()));
 	}
 }
