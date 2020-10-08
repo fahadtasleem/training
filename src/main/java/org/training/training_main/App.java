@@ -1,5 +1,12 @@
 package org.training.training_main;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
+import java.io.IOException;
+import java.math.BigInteger;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -9,16 +16,27 @@ import java.util.Random;
  */
 public class App 
 {
+
 	static class Employee{
 		String name;
 		String age;
-		Employee(String name,String age){
+		BigInteger number;
+        public Employee(){}
+
+		public Employee(String name,String age){
 			this.name = name;
 			this.age = age;
 		}
-	}
-    public static void main( String[] args )
-    {
+
+        public void setNumber(BigInteger number) {
+            this.number = number;
+        }
+    }
+    public static void main( String[] args ) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Employee e = objectMapper.readValue("{\"number\": 234.34}", Employee.class);
+        ZonedDateTime zonedDateTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
+        System.out.println(Instant.now().toEpochMilli()+ " "+zonedDateTime);
         System.out.print(hasString("sadcddfdfb", "abc"));
         System.out.println(new Random(100).nextInt());
         System.out.println(new Random(100).nextInt());

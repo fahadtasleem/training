@@ -50,7 +50,7 @@ public class SlidingWindow {
 
     public static void main(String[] args) {
 		int[] n = new int[]{11,44,33,22,55};
-		int[] queries = new int[] {2};
+		int[] queries = new int[] {2,4};
 		int[] res = solve(n, queries);
 		System.out.println(Arrays.toString(res));
 	}

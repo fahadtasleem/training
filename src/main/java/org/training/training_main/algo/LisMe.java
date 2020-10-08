@@ -35,7 +35,7 @@ public class LisMe {
         return l;
     }
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+	public static void main(String[] args) throws IOException, URISyntaxException {
 //        List<String> strs = Files.readAllLines(Paths.get("/Users/fahadtasleem/Arr.text"));
 //        System.out.println(strs.size());
 //        int[] arr = new int[strs.size()];
@@ -46,5 +46,7 @@ public class LisMe {
         int[] a = {3,2,6,4,5,1};
         int result = longestIncreasingSubsequence(a);
         System.out.println(result);
+        int[] b = {1,2,1};
     }
+
 }

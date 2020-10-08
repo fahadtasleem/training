@@ -1,5 +1,7 @@
 package org.training.training_main.algo;
 
+import java.util.Arrays;
+
 public class MergeSort {
 	public static void mergeSort(int[] list, int start, int end) {
 		if (list.length <= 1) {
@@ -41,6 +43,9 @@ public class MergeSort {
 		for (int i : numbers) {
 			System.out.print(i+" ");
 		}
+		System.out.println("");
+		numbers = new int[]{ 10, 5, 7, 9, 3, 1, 2, 11, 8 };
+		System.out.println(Arrays.toString(numbers));
 	}
 
 }

@@ -6,8 +6,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class ExecutorServiceExample {
+	static Object lock = new Object();
 	public static void main(String[] args) throws InterruptedException {
-		ExecutorService executor = Executors.newFixedThreadPool(4+1);
+		ExecutorService executor = Executors.newFixedThreadPool(1);
 		long start = System.nanoTime();
 		System.out.println(Runtime.getRuntime().availableProcessors());
 		System.out.println("Start "+ System.nanoTime());
@@ -18,6 +19,7 @@ public class ExecutorServiceExample {
 //				} catch (InterruptedException e) {
 //				}
 				System.out.print(". "+Thread.currentThread().getId());
+				
 				//System.out.println("Thread id "+Thread.currentThread().getId());
 			});
 		}

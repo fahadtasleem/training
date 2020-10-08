@@ -171,5 +171,41 @@ public class BinaryTree
 			h++;
 		}
 	}
+
+	static int max = Integer.MIN_VALUE;
+	int maxSum(Node root){
+		Util u = maxSumUtil(root);
+		System.out.println(max);
+		return u.leftPathSum;
+	}
+
+	static class Util{
+		int leftPathSum;
+		int rightPathSum;
+		Util(int l,int r){
+			leftPathSum = l;
+			rightPathSum = r;
+		}
+	}
+
+	Util maxSumUtil(Node root){
+		if(root == null){
+			return new Util(0,0);
+		}
+		int value = root.data;
+		Util left = maxSumUtil(root.left);
+		Util right = maxSumUtil(root.right);
+
+		int leftValue = Math.max(Math.max(value + left.leftPathSum, left.rightPathSum), value);
+		int rightValue = Math.max(Math.max(value + right.rightPathSum, right.rightPathSum), value);
+		if(leftValue > max){
+			max = leftValue;
+		}
+		if(rightValue > max){
+			max = rightValue;
+		}
+
+		return new Util(leftValue,rightValue);
+	}
 }
 	

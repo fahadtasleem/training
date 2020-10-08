@@ -86,11 +86,11 @@ public class RobotGrid {
 	public static void main(String[] args) {
 		int[][] grid = new int[][]{
 			{0,0,0},
-			{0,0,0},
+			{0,0,1},
 			{0,0,0}
 		};
-//		System.out.println(countPath(grid,0,0));
-//		System.out.println(countPathDynamic(grid,0,0));
+		System.out.println(countPath(grid,0,0));
+		System.out.println(countPathDynamic(grid,0,0));
 //		List<String> path = new LinkedList<>();
 //		getPaths(grid,0,0,path);
 //		System.out.println(listPaths.size());

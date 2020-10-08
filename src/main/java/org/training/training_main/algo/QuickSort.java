@@ -39,10 +39,48 @@ public class QuickSort {
         return i+1;
 	}
 
+
 	public static void main(String[] ar){
-		int[] elems = new int[]{27,5,1,6,-5,12,2};
-		System.out.println(Arrays.toString(elems));
-		quickSort(elems, 0, elems.length-1);
-		System.out.println(Arrays.toString(elems));
+//		int[] elems = new int[]{27,5,1,6,-5,12,2};
+//		System.out.println(Arrays.toString(elems));
+//		quickSort(elems, 0, elems.length-1);
+//		System.out.println(Arrays.toString(elems));
+
+		int[] elems1 = new int[]{27,5,1,6,-5,12,2};
+		quickSort1(elems1);
+        System.out.println("new ----- ");
+        System.out.println(Arrays.toString(elems1));
 	}
+
+    ///// USE THIS
+    public static void quickSort1(int[] arr){
+	    quickSort1(arr,0,arr.length-1);
+    }
+
+    private static void quickSort1(int[] arr, int left, int right) {
+	    if(left < right){
+	        int pivot = arr[right];
+	        int index = partition1(arr, left, right,pivot);
+	        System.out.println(Arrays.toString(arr));
+	        quickSort1(arr, left, index-1);
+            quickSort1(arr, index, right);
+        }
+    }
+
+    private static int partition1(int[] arr, int left, int right, int pivot) {
+	    while(left < right){
+	        while(arr[left] < pivot){
+	            left++;
+            }
+	        while (arr[right] > pivot){
+	            right--;
+            }
+	        if(left < right){
+	            int temp = arr[left];
+	            arr[left] = arr[right];
+	            arr[right] = temp;
+            }
+        }
+	    return left;
+    }
 }
